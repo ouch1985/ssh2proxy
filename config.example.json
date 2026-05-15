@@ -1,0 +1,59 @@
+{
+  "proxies": [
+    {
+      "name": "vps-password",
+      "enabled": true,
+      "ssh": {
+        "host": "203.0.113.10",
+        "port": 22,
+        "username": "root",
+        "password": "替换为你的 SSH 密码"
+      },
+      "proxy": {
+        "host": "127.0.0.1",
+        "port": 1080
+      }
+    },
+    {
+      "name": "vps-rsa-key",
+      "enabled": false,
+      "ssh": {
+        "host": "198.51.100.20",
+        "port": 22,
+        "username": "ubuntu",
+        "privateKey": "/Users/你的用户名/.ssh/id_rsa",
+        "passphrase": "密钥口令，无则留空或删除该字段"
+      },
+      "proxy": {
+        "host": "127.0.0.1",
+        "port": 1081
+      }
+    }
+  ],
+  "sites": [
+    {
+      "name": "openrouter",
+      "enabled": true,
+      "proxy": "vps-password",
+      "host": "127.0.0.1",
+      "port": 7072,
+      "target": "https://openrouter.ai"
+    },
+    {
+      "name": "anthropic-api",
+      "enabled": true,
+      "proxy": "vps-password",
+      "host": "127.0.0.1",
+      "port": 7073,
+      "target": "https://api.anthropic.com"
+    },
+    {
+      "name": "example-disabled",
+      "enabled": false,
+      "proxy": "vps-password",
+      "host": "127.0.0.1",
+      "port": 7074,
+      "target": "https://example.com"
+    }
+  ]
+}
