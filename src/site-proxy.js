@@ -72,6 +72,8 @@ class SiteProxy {
     }
 
     const path = req.url || '/';
+    const fullUrl = `${this.site.target}${path}`;
+    this.log.debug(`${req.method} ${fullUrl}`);
     const defaultPort = this.useTls ? 443 : 80;
     const port = this.target.port ? Number(this.target.port) : defaultPort;
 
